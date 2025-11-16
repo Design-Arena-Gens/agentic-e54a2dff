@@ -1,0 +1,315 @@
+:root {
+  color-scheme: light;
+  --bg: #0f172a;
+  --bg-muted: #1e293b;
+  --surface: #111827;
+  --surface-alt: #0b1120;
+  --accent: #38bdf8;
+  --accent-strong: #0284c7;
+  --text: #e2e8f0;
+  --text-muted: #94a3b8;
+  --border: rgba(255, 255, 255, 0.1);
+  --radius-lg: 18px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  background: radial-gradient(circle at top left, #1e1b4b 0%, #0f172a 60%);
+  min-height: 100%;
+  color: var(--text);
+  display: flex;
+  width: 100%;
+}
+
+body {
+  align-items: stretch;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  padding: 3rem clamp(1rem, 3vw, 3rem);
+  gap: 2rem;
+  background: linear-gradient(
+      165deg,
+      rgba(15, 23, 42, 0.95) 0%,
+      rgba(15, 23, 42, 0.85) 100%
+    ),
+    radial-gradient(circle at top right, rgba(59, 130, 246, 0.2), transparent);
+}
+
+.page-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  align-items: stretch;
+}
+
+.panel {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: clamp(1.75rem, 2vw, 2.5rem);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(20px);
+}
+
+.panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.15;
+  background: radial-gradient(
+    circle at top right,
+    rgba(56, 189, 248, 0.8),
+    transparent 55%
+  );
+}
+
+.panel h1,
+.panel h2 {
+  margin: 0 0 1.25rem;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  letter-spacing: -0.02em;
+}
+
+.panel h2 {
+  font-size: clamp(1.4rem, 2vw, 1.75rem);
+}
+
+.panel p {
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin: 0 0 1.5rem;
+}
+
+.panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.panel li {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  padding: 0.85rem 1rem;
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.panel li::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  border-radius: 999px;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.7);
+}
+
+.cta-note {
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: rgba(14, 116, 144, 0.35);
+  padding: 1rem;
+  margin-top: 1.5rem;
+  color: #cffafe;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.cta-note strong {
+  font-weight: 600;
+  color: #e0f2fe;
+}
+
+.app-footer {
+  text-align: center;
+  color: rgba(226, 232, 240, 0.55);
+  font-size: 0.85rem;
+}
+
+.app-footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.hero-panel {
+  grid-column: 1 / -1;
+}
+
+.upload-zone {
+  margin: 1.5rem 0 2rem;
+  border-radius: var(--radius-lg);
+  border: 1px dashed rgba(148, 163, 184, 0.45);
+  background: rgba(15, 23, 42, 0.6);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  display: block;
+}
+
+.upload-zone:hover {
+  border-color: var(--accent);
+  background: rgba(56, 189, 248, 0.08);
+}
+
+.upload-zone__inner {
+  display: grid;
+  justify-items: center;
+  padding: 2.5rem 1.5rem;
+  gap: 0.45rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.upload-zone__icon {
+  font-size: 2rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.editor-grid {
+  display: grid;
+  gap: 1.75rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.preview-card,
+.controls-card {
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  padding: 1.5rem;
+  border-radius: var(--radius-md);
+  display: grid;
+  gap: 1.25rem;
+}
+
+.preview-frame {
+  position: relative;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: rgba(15, 23, 42, 0.85);
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 220px;
+}
+
+.preview-image {
+  position: relative;
+  width: 100%;
+  height: clamp(220px, 45vh, 420px);
+}
+
+.preview-image > span {
+  position: absolute !important;
+  inset: 0 !important;
+}
+
+.preview-image img {
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.orientation-controls {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.orientation-controls button {
+  background: rgba(14, 165, 233, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.45);
+  color: #bae6fd;
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.75rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.orientation-controls button:hover {
+  background: rgba(56, 189, 248, 0.2);
+  transform: translateY(-1px);
+}
+
+.slider {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.slider label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: rgba(226, 232, 240, 0.8);
+}
+
+.slider input[type="range"] {
+  accent-color: var(--accent);
+}
+
+.editor-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.editor-actions button {
+  flex: 1;
+  min-width: 130px;
+  border-radius: var(--radius-sm);
+  border: none;
+  padding: 0.85rem 1rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.editor-actions button.primary {
+  background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+  color: #0f172a;
+  font-weight: 600;
+  box-shadow: 0 12px 25px rgba(2, 132, 199, 0.35);
+}
+
+.editor-actions button.primary:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.editor-actions button.secondary {
+  background: rgba(30, 41, 59, 0.8);
+  color: var(--text);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.editor-actions button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 20px rgba(15, 23, 42, 0.4);
+}
+
+@media (max-width: 600px) {
+  .app-shell {
+    padding: 2rem 1.25rem 3rem;
+  }
+}
